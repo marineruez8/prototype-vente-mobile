@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YZY - Vente Pharmacie</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 01 - Splash Screen -->
+    <div id="splash-screen" class="screen active">
+        <div class="splash-content">
+            <div class="logo">
+                <div class="logo-icon">Y<span class="logo-number">10</span></div>
+            </div>
+            <h1 class="slogan">Slogan YZY</h1>
+            <div class="splash-illustration">
+                <svg viewBox="0 0 200 200" class="illustration">
+                    <circle cx="100" cy="100" r="80" fill="#4A3099"/>
+                    <rect x="70" y="80" width="60" height="40" rx="5" fill="#FF6B6B"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 02 - Écran de connexion -->
+    <div id="welcome-screen" class="screen">
+        <div class="welcome-header">
+            <div class="logo-small">Y<span class="logo-number">10</span></div>
+        </div>
+        <div class="welcome-content">
+            <h1>Bienvenue sur<br>YZY</h1>
+            <p>Merci de vous connecter pour continuer</p>
+            <button class="btn-primary" onclick="showScreen('login-screen')">CONNECTEZ VOUS</button>
+        </div>
+        <div class="wave-bottom"></div>
+    </div>
+
+    <!-- 03 - Connexion -->
+    <div id="login-screen" class="screen">
+        <div class="login-header">
+            <div class="logo-small">Y<span class="logo-number">10</span></div>
+        </div>
+        <div class="wave-top"></div>
+        <div class="login-content">
+            <div class="login-card">
+                <div class="language-selector">
+                    Français <span>▼</span>
+                </div>
+                <h2>Connectez-vous à votre compte</h2>
+                <form onsubmit="login(event)">
+                    <div class="form-group">
+                        <label>Courriel</label>
+                        <input type="email" value="yzy.equa+py@gmail.com" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" value="password123" class="form-input">
+                        <span class="password-toggle">👁</span>
+                    </div>
+                    <div class="form-footer">
+                        <label class="checkbox">
+                            <input type="checkbox"> Se souvenir de moi
+                        </label>
+                        <a href="#" class="link">Mot de passe oublié ?</a>
+                    </div>
+                    <button type="submit" class="btn-primary">Connexion</button>
+                    <div class="divider">Ou se connecter avec</div>
+                    <button type="button" class="btn-sso">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='Arial' font-size='20' fill='%23333'%3EPRO SANTÉ CONNECT%3C/text%3E%3C/svg%3E" alt="Pro Santé Connect">
+                    </button>
+                    <div class="signup-link">
+                        Nouvel utilisateur ? <a href="#" class="link">Enregistrement</a>
+                    </div>
+                    <p class="legal-text">Au terme de votre inscription, vous serez redirigé vers Mon Compte Personnel.</p>
+                </form>
+            </div>
+            <button class="btn-back" onclick="showScreen('welcome-screen')">← Retour</button>
+        </div>
+    </div>
+
+    <!-- 04 - Accueil vente -->
+    <div id="home-screen" class="screen">
+        <div class="header">
+            <div class="search-container">
+                <img src="images/search.svg" alt="Rechercher" class="search-icon">
+                <input type="text" class="search-bar" placeholder="Rechercher">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="tile" data-tile="patient" onclick="showBottomSheet('patient-sheet')">
+                <div class="tile-icon"><img src="images/patient.svg" alt="Patient"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Patient</div>
+                    <div class="tile-subtitle">Ajouter ou rechercher un patient</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescriber" onclick="setPrescriber(true)">
+                <div class="tile-icon"><img src="images/prescripteur.svg" alt="Prescripteur"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Prescripteur</div>
+                    <div class="tile-subtitle">Ajouter un médecin prescripteur</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescription" onclick="setPrescription(true)">
+                <div class="tile-icon"><img src="images/ordonance.svg" alt="Ordonnance"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Ordonnance</div>
+                    <div class="tile-subtitle">Scanner une ordonnance</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-illustration">
+                    <img src="images/image 5.png" alt="Aucun produit" class="illustration" onclick="setProducts(true)" style="cursor: pointer;">
+                </div>
+                <h3>Aucun produit</h3>
+                <p>Pour démarrer une vente, ajouter ou scanner un produit,<br>un prescripteur ou une ordonnance numérique</p>
+            </div>
+        </div>
+
+        <button class="btn-actions" onclick="showBottomSheet('actions-sheet')">ACTIONS</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 06 - Vente avec patient renseigné -->
+    <div id="home-with-patient-screen" class="screen">
+        <div class="header">
+            <div class="search-container">
+                <img src="images/search.svg" alt="Rechercher" class="search-icon">
+                <input type="text" class="search-bar" placeholder="Rechercher">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="tile" data-tile="patient" onclick="showBottomSheet('patient-sheet')">
+                <div class="tile-icon"><img src="images/patient.svg" alt="Patient"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Patient</div>
+                    <div class="tile-subtitle">Ajouter ou rechercher un patient</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescriber" onclick="setPrescriber(true)">
+                <div class="tile-icon"><img src="images/prescripteur.svg" alt="Prescripteur"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Prescripteur</div>
+                    <div class="tile-subtitle">Ajouter un médecin prescripteur</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescription" onclick="setPrescription(true)">
+                <div class="tile-icon"><img src="images/ordonance.svg" alt="Ordonnance"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Ordonnance</div>
+                    <div class="tile-subtitle">Scanner une ordonnance</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-illustration">
+                    <img src="images/image 5.png" alt="Aucun produit" class="illustration" onclick="setProducts(true)" style="cursor: pointer;">
+                </div>
+                <h3>Aucun produit</h3>
+                <p>Pour démarrer une vente, ajouter ou scanner un produit,<br>un prescripteur ou une ordonnance numérique</p>
+            </div>
+        </div>
+
+        <button class="btn-actions" onclick="showBottomSheet('actions-sheet')">ACTIONS</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 06b - Vente avec patient et prescripteur -->
+    <div id="home-with-prescriber-screen" class="screen">
+        <div class="header">
+            <div class="search-container">
+                <img src="images/search.svg" alt="Rechercher" class="search-icon">
+                <input type="text" class="search-bar" placeholder="Rechercher">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="tile" data-tile="patient" onclick="showBottomSheet('patient-sheet')">
+                <div class="tile-icon"><img src="images/patient.svg" alt="Patient"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Patient</div>
+                    <div class="tile-subtitle">Ajouter ou rechercher un patient</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescriber" onclick="setPrescriber(true)">
+                <div class="tile-icon"><img src="images/prescripteur.svg" alt="Prescripteur"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Prescripteur</div>
+                    <div class="tile-subtitle">Ajouter un médecin prescripteur</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescription" onclick="setPrescription(true)">
+                <div class="tile-icon"><img src="images/ordonance.svg" alt="Ordonnance"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Ordonnance</div>
+                    <div class="tile-subtitle">Scanner une ordonnance</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-illustration">
+                    <img src="images/image 5.png" alt="Aucun produit" class="illustration" onclick="setProducts(true)" style="cursor: pointer;">
+                </div>
+                <h3>Aucun produit</h3>
+                <p>Pour démarrer une vente, ajouter ou scanner un produit,<br>un prescripteur ou une ordonnance numérique</p>
+            </div>
+        </div>
+
+        <button class="btn-actions" onclick="showBottomSheet('actions-sheet')">ACTIONS</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 06c - Vente avec patient, prescripteur et ordonnance -->
+    <div id="home-with-prescription-screen" class="screen">
+        <div class="header">
+            <div class="search-container">
+                <img src="images/search.svg" alt="Rechercher" class="search-icon">
+                <input type="text" class="search-bar" placeholder="Rechercher">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="tile" data-tile="patient" onclick="showBottomSheet('patient-sheet')">
+                <div class="tile-icon"><img src="images/patient.svg" alt="Patient"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Patient</div>
+                    <div class="tile-subtitle">Ajouter ou rechercher un patient</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescriber" onclick="setPrescriber(true)">
+                <div class="tile-icon"><img src="images/prescripteur.svg" alt="Prescripteur"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Prescripteur</div>
+                    <div class="tile-subtitle">Ajouter un médecin prescripteur</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescription" onclick="setPrescription(true)">
+                <div class="tile-icon"><img src="images/ordonance.svg" alt="Ordonnance"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Ordonnance</div>
+                    <div class="tile-subtitle">Scanner une ordonnance</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-illustration">
+                    <img src="images/image 5.png" alt="Aucun produit" class="illustration" onclick="setProducts(true)" style="cursor: pointer;">
+                </div>
+                <h3>Aucun produit</h3>
+                <p>Pour démarrer une vente, ajouter ou scanner un produit,<br>un prescripteur ou une ordonnance numérique</p>
+            </div>
+        </div>
+
+        <button class="btn-actions" onclick="showBottomSheet('actions-sheet')">ACTIONS</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 07 - Vente avec patient et produits -->
+    <div id="home-with-products-screen" class="screen">
+        <div class="header">
+            <div class="search-container">
+                <img src="images/search.svg" alt="Rechercher" class="search-icon">
+                <input type="text" class="search-bar" placeholder="Rechercher">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="tile tile-filled" data-tile="patient" onclick="showBottomSheet('patient-options-sheet')">
+                <div class="tile-icon"><img src="images/patient couleur.svg" alt="Patient"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Pauline NORAB</div>
+                    <div class="tile-subtitle">25 ans | Femme <img src="images/ADRI.png" alt="ADRI" class="adri-icon"></div>
+                </div>
+                <div class="tile-action" style="display: none;">+</div>
+            </div>
+
+            <div class="tile tile-filled" data-tile="prescriber" onclick="setPrescriber(true)">
+                <div class="tile-icon"><img src="images/prescripteur couleur.svg" alt="Prescripteur"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Jean-Pierre MALAUSSENA</div>
+                    <div class="tile-subtitle">Médecin généraliste</div>
+                </div>
+                <div class="tile-action" style="display: none;">+</div>
+            </div>
+
+            <div class="tile" data-tile="prescription" onclick="setPrescription(true)">
+                <div class="tile-icon"><img src="images/ordonance.svg" alt="Ordonnance"></div>
+                <div class="tile-info">
+                    <div class="tile-title">Ordonnance</div>
+                    <div class="tile-subtitle">Scanner une ordonnance</div>
+                </div>
+                <div class="tile-action">+</div>
+            </div>
+
+            <div class="products-section">
+                <div class="section-header">
+                    <span>Produits (3)</span>
+                    <a href="#" class="link">Voir tout ›</a>
+                </div>
+                <div class="product-item" onclick="showProductDetail('DOLIPRANE 1000MG CPR', '500€', '5 en stock', '5', '3287634103889')">
+                    <div class="product-info">
+                        <div class="product-name">DOLIPRANE 1000MG CPR</div>
+                        <div class="product-price">500€</div>
+                        <div class="product-stock">5 en stock</div>
+                    </div>
+                    <div class="product-quantity">
+                        <button class="qty-btn" onclick="changeQuantity('product-1', -1); event.stopPropagation()">-</button>
+                        <span class="qty-value" id="product-1">5</span>
+                        <button class="qty-btn" onclick="changeQuantity('product-1', 1); event.stopPropagation()">+</button>
+                    </div>
+                </div>
+                <div class="product-item" onclick="showProductDetail('AMOXICILINE 500MG GEL', '4,50€', '12 en stock', '1', '3400936404809')">
+                    <div class="product-info">
+                        <div class="product-name">AMOXICILINE 500MG GEL</div>
+                        <div class="product-price">4,50€</div>
+                        <div class="product-stock">12 en stock</div>
+                    </div>
+                    <div class="product-quantity">
+                        <button class="qty-btn" onclick="changeQuantity('product-2', -1); event.stopPropagation()">-</button>
+                        <span class="qty-value" id="product-2">1</span>
+                        <button class="qty-btn" onclick="changeQuantity('product-2', 1); event.stopPropagation()">+</button>
+                    </div>
+                </div>
+                <div class="product-item" onclick="showProductDetail('AMOXICILINE 500MG GEL', '4,50€', '12 en stock', '1', '3400936404809')">
+                    <div class="product-info">
+                        <div class="product-name">AMOXICILINE 500MG GEL</div>
+                        <div class="product-price">4,50€</div>
+                        <div class="product-stock">12 en stock</div>
+                        <div class="product-warning">Redondance thérapeutique</div>
+                    </div>
+                    <div class="product-quantity">
+                        <button class="qty-btn" onclick="changeQuantity('product-3', -1); event.stopPropagation()">-</button>
+                        <span class="qty-value" id="product-3">1</span>
+                        <button class="qty-btn" onclick="changeQuantity('product-3', 1); event.stopPropagation()">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-actions" onclick="showBottomSheet('actions-sheet')">ACTIONS</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 11 - Facturation -->
+    <div id="facturation-screen" class="screen">
+        <div class="header-bar">
+            <button class="back-btn" onclick="showScreen('home-with-products-screen')">←</button>
+            <h2>Facturation</h2>
+        </div>
+
+        <div class="content scrollable">
+            <div class="patient-card-small">
+                <div class="patient-avatar">P</div>
+                <div class="patient-info-small">
+                    <div class="patient-name">Pauline NORAB</div>
+                    <div class="patient-details">25 ans | Femme <span class="status-dot">●</span></div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Informations</h3>
+                <div class="info-row">01/01/1981</div>
+                <div class="info-row">01 345 888 1 - Maladie <span class="badge-link">01202</span> <span class="badge-link">ALD</span></div>
+                <div class="info-row">Aucune AMC</div>
+            </div>
+
+            <div class="info-section">
+                <h3>Ordonnance</h3>
+                <div class="info-row">Prescription du 07/11/2025</div>
+                <div class="info-row">54120123</div>
+                <div class="info-row">SCHNEIDER LUDOVIC</div>
+            </div>
+
+            <div class="info-section">
+                <h3>Infos générales</h3>
+                <div class="info-row">Facturation au 17/11/2025</div>
+                <div class="info-row">
+                    <span class="badge-link">Tiers-Payant AMO</span>
+                    <span class="badge-link">Socain Vitale</span>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Actes</h3>
+                <div class="acte-item">
+                    <div class="acte-label">Prst.</div>
+                    <div class="acte-value">PHN</div>
+                </div>
+                <div class="acte-item">
+                    <div class="acte-label">Code</div>
+                    <div class="acte-value">3400985122685435</div>
+                </div>
+                <div class="acte-item">
+                    <div class="acte-label">Libellé</div>
+                    <div class="acte-value">AVASTIN 25MG/ML PERF FL 16ML 1</div>
+                </div>
+                <div class="acte-item">
+                    <div class="acte-label">Prix</div>
+                    <div class="acte-value">24,00€</div>
+                </div>
+                <div class="acte-item">
+                    <div class="acte-label">AMO</div>
+                    <div class="acte-value">24,00€</div>
+                </div>
+                <div class="acte-item">
+                    <div class="acte-label">AMC</div>
+                    <div class="acte-value">0,00€</div>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="btn-primary btn-facturer" onclick="showScreen('encaissement-screen')">FACTURER</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 12 - Encaissement -->
+    <div id="encaissement-screen" class="screen">
+        <div class="header-bar purple">
+            <button class="back-btn white" onclick="showScreen('facturation-screen')">←</button>
+            <h2>Paiement</h2>
+        </div>
+
+        <div class="payment-header">
+            <div class="payment-title">Montant à encaisser</div>
+            <div class="payment-amount">45,84€</div>
+            <div class="payment-subtitle">Reste à charge patient</div>
+        </div>
+
+        <div class="content payment-content">
+            <div class="payment-method" onclick="showPaymentModal('Carte Bancaire', 'cb')">
+                <div class="payment-icon">
+                    <img src="images/credit_card.svg" alt="Carte Bancaire" id="icon-cb">
+                </div>
+                <div class="payment-label">Carte Bancaire</div>
+                <div class="payment-value" id="payment-cb">0,00 €</div>
+                <div class="payment-arrow">›</div>
+            </div>
+
+            <div class="payment-method" onclick="showPaymentModal('Espèces', 'especes')">
+                <div class="payment-icon">
+                    <img src="images/payments.svg" alt="Espèces" id="icon-especes">
+                </div>
+                <div class="payment-label">Espèces</div>
+                <div class="payment-value" id="payment-especes">0,00 €</div>
+                <div class="payment-arrow">›</div>
+            </div>
+
+            <div class="payment-method" onclick="showPaymentModal('Chèque', 'cheque')">
+                <div class="payment-icon">
+                    <img src="images/universal.svg" alt="Chèque" id="icon-cheque">
+                </div>
+                <div class="payment-label">Chèque</div>
+                <div class="payment-value" id="payment-cheque">0,00 €</div>
+                <div class="payment-arrow">›</div>
+            </div>
+
+            <div class="payment-details">
+                <h3>Détails</h3>
+                <div class="detail-row">
+                    <span>Vente ordonnancé</span>
+                    <span>1 produit</span>
+                    <span>45,84 €</span>
+                </div>
+            </div>
+
+            <div class="payment-summary">
+                <div class="summary-row" id="reste-a-payer-row" style="display: none;">
+                    <span>Reste à payer</span>
+                    <span id="reste-a-payer">0,00 €</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total part patient</span>
+                    <span class="total-amount" id="total-patient">45,84€</span>
+                </div>
+                <div class="summary-row">
+                    <span>Part AMO</span>
+                    <span>0,00 €</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-primary btn-actions" onclick="showScreen('impression-screen')">ENCAISSER</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 14 - Impression -->
+    <div id="impression-screen" class="screen">
+        <div class="header-bar purple">
+            <button class="back-btn white" onclick="showScreen('encaissement-screen')">←</button>
+            <h2>Impression</h2>
+        </div>
+
+        <div class="content scrollable">
+            <div class="success-message">
+                <div class="success-icon">✓</div>
+                <div class="success-text">
+                    <div class="success-title">Encaissement fait avec succès</div>
+                    <div class="success-number">N° FAC-2026-001234</div>
+                </div>
+            </div>
+
+            <div class="print-section">
+                <h3>Options d'impression</h3>
+                <div class="print-subtitle">Ordonnance n°1</div>
+
+                <div class="print-option">
+                    <div class="print-option-icon" id="icon-ticket">
+                        <img src="images/receip.svg" alt="Ticket de caisse">
+                    </div>
+                    <div class="print-option-label">
+                        <div class="print-option-title">Ticket de caisse</div>
+                        <div class="print-option-number">N° FAC-2026-001234</div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-ticket" onchange="togglePrintIcon('ticket', this.checked)">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="print-option">
+                    <div class="print-option-icon active" id="icon-facture">
+                        <img src="images/receipt_long_color.svg" alt="Facture">
+                    </div>
+                    <div class="print-option-label">
+                        <div class="print-option-title">Facture</div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-facture" checked onchange="togglePrintIcon('facture', this.checked)">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="print-section">
+                <h3>Mode d'impression</h3>
+
+                <div class="print-option">
+                    <div class="print-option-icon" id="icon-print">
+                        <img src="images/print.svg" alt="Impression directe">
+                    </div>
+                    <div class="print-option-label">
+                        <div class="print-option-title">Impression directe</div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-print" onchange="togglePrintIcon('print', this.checked)">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="print-option">
+                    <div class="print-option-icon" id="icon-email">
+                        <img src="images/alternate_email.svg" alt="Envoi par email">
+                    </div>
+                    <div class="print-option-label">
+                        <div class="print-option-title">Envoi par email</div>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-email" onchange="togglePrintIcon('email', this.checked)">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-primary btn-actions" onclick="resetSaleState(); showScreen('home-screen')">VALIDER</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <span class="nav-icon"><img src="images/shopping.svg" alt="Vente"></span>
+                <span class="nav-label">Vente</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/local_shipping.svg" alt="Achats"></span>
+                <span class="nav-label">Achats</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/database.svg" alt="Données"></span>
+                <span class="nav-label">Données</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/storefront.svg" alt="Gestion"></span>
+                <span class="nav-label">Gestion</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><img src="images/settings.svg" alt="Paramètres"></span>
+                <span class="nav-label">Paramètres</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Bottom Sheets -->
+    <div id="overlay" class="overlay" onclick="hideBottomSheet()"></div>
+
+    <!-- 05 - Renseigner patient -->
+    <div id="patient-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>Renseignez votre patient</h2>
+        <div class="sheet-option" onclick="hideBottomSheet(); setTimeout(() => setPatient(true), 300)">
+            <div class="option-icon"><img src="images/carte-vitale.svg" alt="Carte vitale"></div>
+            <div class="option-label">Carte vitale</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/qr_code_color.svg" alt="Application mobile"></div>
+            <div class="option-label">Application mobile</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/search color.svg" alt="Rechercher"></div>
+            <div class="option-label">Rechercher un patient</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/add.svg" alt="Créer"></div>
+            <div class="option-label">Créer un patient</div>
+        </div>
+    </div>
+
+    <!-- Patient Options Sheet (08) -->
+    <div id="patient-options-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>Patient</h2>
+        <div class="sheet-option" onclick="showPatientDetail()">
+            <div class="option-icon"><img src="images/person.svg" alt="Voir fiche"></div>
+            <div class="option-label">Voir la fiche patient</div>
+        </div>
+        <div class="sheet-option" onclick="hideBottomSheet(); setTimeout(() => setPatient(false), 300)">
+            <div class="option-icon"><img src="images/edit.svg" alt="Modifier"></div>
+            <div class="option-label">Modifier le patient</div>
+        </div>
+    </div>
+
+    <!-- Prescripteur Options Sheet -->
+    <div id="prescripteur-options-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>Prescripteur</h2>
+        <div class="sheet-option" onclick="showPrescriberDetail()">
+            <div class="option-icon"><img src="images/person.svg" alt="Voir fiche"></div>
+            <div class="option-label">Voir la fiche prescripteur</div>
+        </div>
+        <div class="sheet-option" onclick="hideBottomSheet(); setTimeout(() => setPrescriber(false), 300)">
+            <div class="option-icon"><img src="images/edit.svg" alt="Modifier"></div>
+            <div class="option-label">Modifier le prescripteur</div>
+        </div>
+    </div>
+
+    <!-- Ordonnance Options Sheet -->
+    <div id="ordonnance-options-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>Ordonnance numérique</h2>
+        <div class="sheet-option" onclick="hideBottomSheet()">
+            <div class="option-icon"><img src="images/person.svg" alt="Voir détail"></div>
+            <div class="option-label">Voir le détail de l'ordonnance</div>
+        </div>
+        <div class="sheet-option" onclick="hideBottomSheet(); setTimeout(() => setPrescription(false), 300)">
+            <div class="option-icon"><img src="images/edit.svg" alt="Modifier"></div>
+            <div class="option-label">Modifier l'ordonnance</div>
+        </div>
+    </div>
+
+    <!-- Prescripteur Sheet -->
+    <div id="prescripteur-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>Renseignez votre prescripteur</h2>
+        <div class="sheet-option" onclick="hideBottomSheet(); setTimeout(() => showScreen('home-with-products-screen'), 300)">
+            <div class="option-icon">💳</div>
+            <div class="option-label">Carte vitale</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon">🔍</div>
+            <div class="option-label">Rechercher un prescripteur</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon">➕</div>
+            <div class="option-label">Créer un prescripteur</div>
+        </div>
+    </div>
+
+    <!-- Ordonnance Sheet -->
+    <div id="ordonnance-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>Scanner une ordonnance</h2>
+        <div class="sheet-option">
+            <div class="option-icon">📷</div>
+            <div class="option-label">Scanner avec l'appareil photo</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon">📁</div>
+            <div class="option-label">Importer depuis la galerie</div>
+        </div>
+    </div>
+
+    <!-- 10 - Actions Sheet -->
+    <div id="actions-sheet" class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <h2>ACTIONS</h2>
+        <div class="sheet-option" onclick="hideBottomSheet(); resetSaleState()">
+            <div class="option-icon"><img src="images/delete.svg" alt="Supprimer"></div>
+            <div class="option-label">Tout annuler</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/add.svg" alt="Ajouter"></div>
+            <div class="option-label">Créer</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/search color.svg" alt="Rechercher"></div>
+            <div class="option-label">Ajouter</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/history.svg" alt="Historique"></div>
+            <div class="option-label">Historique de délivrances</div>
+        </div>
+        <div id="creer-fse-option" class="sheet-option" onclick="handleCreerFSE()">
+            <div class="option-icon"><img src="images/fact_check.svg" alt="FSE"></div>
+            <div class="option-label">Créer FSE</div>
+        </div>
+        <div class="sheet-option">
+            <div class="option-icon"><img src="images/buy.svg" alt="Encaisser"></div>
+            <div class="option-label">Encaisser</div>
+        </div>
+    </div>
+
+    <!-- Patient Detail Modal (08) -->
+    <div id="patient-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header purple">
+                <h2>Pauline NORAB</h2>
+                <span class="patient-age">25 ans | Femme <span class="status-dot">●</span></span>
+                <button class="modal-close" onclick="hidePatientDetail()">×</button>
+            </div>
+            <div class="modal-body scrollable">
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Informations générales</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Prénom Nom</span>
+                        <span class="detail-value">Jérôme Molimer</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">NIR</span>
+                        <span class="detail-value">101546781062771</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Date de naissance</span>
+                        <span class="detail-value">05/12/2025</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Sexe</span>
+                        <span class="detail-value">Homme</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>AMO</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="amo-warning-detail">AMO non renseigné</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Contact</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Adresse</span>
+                        <span class="detail-value">CENTRE DE SOINS INFIRMIERS MISERICORDE<br>4140 Parker Rd. Allentown, New Mexico 31134</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Téléphone</span>
+                        <span class="detail-value">06.23.32.01.51</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Suivi patient</h3>
+                        <a href="#" class="link">➕ Ajouter</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Allergie</span>
+                        <span class="detail-value">Aspirine</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prescriber Detail Modal -->
+    <div id="prescriber-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header purple">
+                <h2>Jean-Pierre MALAUSSENA</h2>
+                <span class="patient-age">Médecin généraliste</span>
+                <button class="modal-close" onclick="hidePrescriberDetail()">×</button>
+            </div>
+            <div class="modal-body scrollable">
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Informations générales</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Prénom Nom</span>
+                        <span class="detail-value">Jean-Pierre MALAUSSENA</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">N° RPPS</span>
+                        <span class="detail-value">10003483219</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Spécialité</span>
+                        <span class="detail-value">Médecin généraliste</span>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Contact</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Adresse</span>
+                        <span class="detail-value">Cabinet Médical<br>15 Rue de la République, 75001 Paris</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Téléphone</span>
+                        <span class="detail-value">01.42.36.78.90</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Email</span>
+                        <span class="detail-value">jp.malaussena@cabinet-medical.fr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal (09) -->
+    <div id="product-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header purple">
+                <h2 id="product-detail-name">DOLIPRANE 1000MG CPR</h2>
+                <div class="product-detail-subtitle" id="product-detail-subtitle">50€ | 5 en stock | 5 en quantité</div>
+                <button class="modal-close" onclick="hideProductDetail()">×</button>
+            </div>
+            <div class="modal-body scrollable">
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Commentaire</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="detail-value">Aucun</div>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-header">
+                        <h3>Détails du produit</h3>
+                        <a href="#" class="link"><img src="images/edit.svg" alt="Modifier" class="link-icon"> Modifier</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Désignation</span>
+                        <span class="detail-value" id="product-detail-designation">DOLIPRANE 1000MG CPR</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Code produit</span>
+                        <span class="detail-value" id="product-detail-code">3287634103889</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Code prestation</span>
+                        <span class="detail-value">PH7</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">TVA</span>
+                        <span class="detail-value">21%</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Prix de vente TTC</span>
+                        <span class="detail-value" id="product-detail-price">1,36€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13 - Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content payment-modal-content">
+            <div class="payment-modal-header purple">
+                <button class="modal-close white" onclick="hidePaymentModal()">←</button>
+                <h2>Paiement</h2>
+            </div>
+            <div class="payment-modal-body">
+                <div class="payment-modal-icon">
+                    <img src="images/credit_card.svg" alt="Paiement" id="payment-modal-icon">
+                </div>
+                <h3 id="payment-modal-title">Paiement par carte bancaire</h3>
+                <input type="text" id="payment-amount-input" class="payment-amount-input" value="0€">
+                <div class="payment-modal-buttons">
+                    <button class="btn-secondary" onclick="hidePaymentModal()">Annuler</button>
+                    <button class="btn-primary" onclick="addPayment()">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
