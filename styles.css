@@ -90,7 +90,7 @@ body {
 }
 
 .welcome-header {
-    padding: 20px;
+    padding: 12px;
 }
 
 .logo-small {
@@ -120,20 +120,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 24px;
     color: white;
     text-align: center;
 }
 
 .welcome-content h1 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .welcome-content p {
-    font-size: 16px;
-    margin-bottom: 40px;
+    font-size: 15px;
+    margin-bottom: 24px;
     opacity: 0.9;
 }
 
@@ -147,7 +147,7 @@ body {
 }
 
 .login-header {
-    padding: 20px;
+    padding: 12px;
     position: relative;
     z-index: 2;
 }
@@ -158,14 +158,14 @@ body {
 
 .login-content {
     flex: 1;
-    padding: 20px;
+    padding: 12px;
     overflow-y: auto;
 }
 
 .login-card {
     background: white;
     border-radius: 12px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 3;
@@ -175,19 +175,19 @@ body {
     text-align: right;
     color: #666;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     cursor: pointer;
 }
 
 .login-card h2 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
     color: #333;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     position: relative;
 }
 
@@ -195,12 +195,12 @@ body {
     display: block;
     font-size: 12px;
     color: #666;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .form-input {
     width: 100%;
-    padding: 12px;
+    padding: 10px 12px;
     border: 1px solid #E0E0E0;
     border-radius: 8px;
     font-size: 14px;
@@ -215,7 +215,7 @@ body {
 .password-toggle {
     position: absolute;
     right: 12px;
-    top: 36px;
+    top: 32px;
     cursor: pointer;
 }
 
@@ -223,8 +223,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    font-size: 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
 }
 
 .checkbox {
@@ -249,12 +249,12 @@ body {
 
 .btn-primary {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     background: #502FF8;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
@@ -711,12 +711,13 @@ body {
     left: 0;
     right: 0;
     background: white;
-    border-radius: 20px 20px 0 0;
-    padding: 20px;
+    border-radius: 16px 16px 0 0;
+    padding: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 16px));
     transform: translateY(100%);
     transition: transform 0.3s ease-out;
     z-index: 101;
-    max-height: 80vh;
+    max-height: 75vh;
     overflow-y: auto;
 }
 
@@ -725,27 +726,27 @@ body {
 }
 
 .sheet-handle {
-    width: 40px;
+    width: 36px;
     height: 4px;
     background: #E0E0E0;
     border-radius: 2px;
-    margin: 0 auto 20px;
+    margin: 0 auto 12px;
 }
 
 .bottom-sheet h2 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     text-align: center;
 }
 
 .sheet-option {
-    padding: 16px;
+    padding: 12px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 10px;
     transition: background 0.2s;
 }
 
@@ -754,21 +755,21 @@ body {
 }
 
 .option-icon {
-    font-size: 20px;
-    width: 32px;
-    height: 32px;
+    font-size: 18px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .option-icon img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
 .option-label {
-    font-size: 16px;
+    font-size: 15px;
     color: #333;
 }
 
@@ -808,7 +809,7 @@ body {
 }
 
 .modal-header {
-    padding: 20px;
+    padding: 14px 16px;
     background: #E8E8F0;
     position: relative;
 }
@@ -819,13 +820,13 @@ body {
 }
 
 .modal-header h2 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .patient-age {
-    font-size: 14px;
+    font-size: 13px;
     opacity: 0.9;
 }
 
@@ -836,15 +837,15 @@ body {
 
 .modal-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 14px;
+    right: 16px;
     background: transparent;
     border: none;
-    font-size: 32px;
+    font-size: 28px;
     cursor: pointer;
     color: #333;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -861,7 +862,7 @@ body {
 .modal-body {
     flex: 1;
     overflow-y: auto;
-    padding: 20px;
+    padding: 14px 16px;
 }
 
 .modal-body.scrollable {
@@ -869,23 +870,23 @@ body {
 }
 
 .detail-section {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .detail-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .detail-header h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
 }
 
 .detail-row {
-    padding: 12px 0;
+    padding: 8px 0;
     border-bottom: 1px solid #F0F0F0;
     display: flex;
     justify-content: space-between;
@@ -896,13 +897,13 @@ body {
 }
 
 .detail-label {
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
     flex: 1;
 }
 
 .detail-value {
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
     flex: 2;
     text-align: right;
@@ -911,19 +912,19 @@ body {
 .amo-warning-detail {
     background: #FFE5E5;
     color: #D32F2F;
-    padding: 12px;
+    padding: 10px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Header Bar */
 .header-bar {
     background: #5D3FD3;
     color: white;
-    padding: 16px 20px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 
 .header-bar.purple {
@@ -938,11 +939,11 @@ body {
     background: transparent;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
     padding: 0;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -953,7 +954,7 @@ body {
 }
 
 .header-bar h2 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -966,22 +967,22 @@ body {
 .patient-card-small {
     background: white;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
+    padding: 12px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .patient-avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: #E8E8F0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #5D3FD3;
 }
@@ -991,32 +992,32 @@ body {
 }
 
 .patient-name {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .patient-details {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
 }
 
 .info-section {
     background: white;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-}
-
-.info-section h3 {
-    font-size: 16px;
-    font-weight: 600;
+    padding: 12px;
     margin-bottom: 12px;
 }
 
+.info-section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
 .info-row {
-    padding: 8px 0;
-    font-size: 14px;
+    padding: 6px 0;
+    font-size: 13px;
     color: #333;
 }
 
@@ -1032,7 +1033,7 @@ body {
 
 .acte-item {
     display: flex;
-    padding: 8px 0;
+    padding: 6px 0;
     border-bottom: 1px solid #F0F0F0;
 }
 
@@ -1041,13 +1042,13 @@ body {
 }
 
 .acte-label {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
-    width: 80px;
+    width: 70px;
 }
 
 .acte-value {
-    font-size: 13px;
+    font-size: 12px;
     color: #333;
     flex: 1;
 }
@@ -1056,24 +1057,24 @@ body {
 .payment-header {
     background: #4A2BE4;
     color: white;
-    padding: 40px 20px;
+    padding: 24px 16px;
     text-align: center;
 }
 
 .payment-title {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 14px;
+    margin-bottom: 8px;
     opacity: 0.9;
 }
 
 .payment-amount {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .payment-subtitle {
-    font-size: 14px;
+    font-size: 13px;
     opacity: 0.8;
 }
 
@@ -1085,39 +1086,39 @@ body {
 .payment-method {
     background: white;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 12px;
+    padding: 14px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     cursor: pointer;
 }
 
 .payment-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: #E8E8F0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .payment-icon img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     display: block;
 }
 
 .payment-label {
     flex: 1;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
 }
 
 .payment-value {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #5D3FD3;
 }
@@ -1130,45 +1131,45 @@ body {
 .payment-details {
     background: #DAE3F0;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
-    margin-top: 24px;
+    padding: 12px;
+    margin-bottom: 8px;
+    margin-top: 16px;
 }
 
 .payment-details h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .detail-row {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 6px 0;
 }
 
 .payment-summary {
     background: #DAE3F0;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 80px;
+    padding: 12px;
+    margin-bottom: 60px;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    font-size: 14px;
+    padding: 6px 0;
+    font-size: 13px;
 }
 
 .summary-row.total {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    padding-top: 12px;
+    padding-top: 8px;
 }
 
 .total-amount {
-    font-size: 20px;
+    font-size: 18px;
     color: #000;
     font-weight: bold;
 }
@@ -1192,8 +1193,8 @@ body {
 }
 
 .payment-modal-content {
-    max-height: 95vh;
-    min-height: 60vh;
+    max-height: 90vh;
+    min-height: 50vh;
     background: #4A2BE4;
     display: flex;
     flex-direction: column;
@@ -1202,14 +1203,14 @@ body {
 .payment-modal-header {
     background: #4A2BE4;
     color: white;
-    padding: 16px 20px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 
 .payment-modal-body {
-    padding: 80px 20px;
+    padding: 40px 16px;
     text-align: center;
     background: #4A2BE4;
     color: white;
@@ -1220,35 +1221,35 @@ body {
 }
 
 .payment-modal-icon {
-    font-size: 64px;
-    margin-bottom: 20px;
+    font-size: 48px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .payment-modal-icon img {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     display: block;
     filter: brightness(0) invert(1);
 }
 
 .payment-modal-body h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     color: white;
 }
 
 .payment-amount-input {
     width: 100%;
-    font-size: 40px;
+    font-size: 32px;
     text-align: center;
     border: none;
     border-bottom: 2px solid white;
-    padding: 16px 0;
-    margin-bottom: 32px;
+    padding: 12px 0;
+    margin-bottom: 20px;
     background: transparent;
     color: white;
 }
@@ -1263,18 +1264,18 @@ body {
 
 .payment-modal-buttons {
     display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 12px;
 }
 
 .btn-secondary {
     flex: 1;
-    padding: 14px;
+    padding: 12px;
     background: transparent;
     color: white;
     border: 2px solid white;
     border-radius: 24px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -1340,23 +1341,23 @@ body {
 .success-message {
     background: #E8F5E9;
     border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 24px;
+    padding: 14px;
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 
 .success-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: #4CAF50;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .success-text {
@@ -1364,57 +1365,57 @@ body {
 }
 
 .success-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .success-number {
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
 }
 
 .print-section {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .print-section h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .print-subtitle {
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 .print-option {
     background: white;
     border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .print-option-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: #E8E8F0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
     transition: background-color 0.3s ease;
 }
 
 .print-option-icon img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     display: block;
 }
 
@@ -1427,13 +1428,13 @@ body {
 }
 
 .print-option-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .print-option-number {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
 }
 
