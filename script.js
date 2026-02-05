@@ -350,17 +350,31 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Prevent pull-to-refresh on mobile
+// Prevent pull-to-refresh on mobile (but allow normal scrolling)
 let touchStartY = 0;
+let touchStartElement = null;
+
 document.addEventListener('touchstart', (e) => {
     touchStartY = e.touches[0].clientY;
+    touchStartElement = e.target;
 }, { passive: true });
 
 document.addEventListener('touchmove', (e) => {
     const touchY = e.touches[0].clientY;
     const touchYDelta = touchY - touchStartY;
 
-    if (touchYDelta > 0 && window.scrollY === 0) {
+    // Only prevent pull-to-refresh when at the top of the page
+    // Check if we're inside a scrollable container
+    const scrollableParent = e.target.closest('.content, .modal-body, .bottom-sheet, .scrollable, .payment-content');
+
+    if (scrollableParent) {
+        // Allow normal scrolling inside scrollable containers
+        // Only block if container is at top AND user is pulling down
+        if (touchYDelta > 0 && scrollableParent.scrollTop === 0) {
+            e.preventDefault();
+        }
+    } else if (touchYDelta > 0 && window.scrollY === 0) {
+        // Fallback for elements outside scrollable containers
         e.preventDefault();
     }
 }, { passive: false });
