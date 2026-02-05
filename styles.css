@@ -382,7 +382,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 12px;
-    padding-bottom: calc(110px + env(safe-area-inset-bottom, 16px));
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 16px));
     background: #E7EEF7;
 }
 
@@ -501,7 +501,7 @@ body {
 
 .btn-actions {
     position: fixed;
-    bottom: calc(70px + env(safe-area-inset-bottom, 16px));
+    bottom: calc(80px + env(safe-area-inset-bottom, 16px));
     left: 12px;
     right: 12px;
     width: auto;
@@ -537,7 +537,7 @@ body {
 
 .btn-facturer {
     position: fixed;
-    bottom: calc(70px + env(safe-area-inset-bottom, 16px));
+    bottom: calc(80px + env(safe-area-inset-bottom, 16px));
     left: 12px;
     right: 12px;
     width: auto;
